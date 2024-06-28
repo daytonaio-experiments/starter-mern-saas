@@ -1,1 +1,1 @@
-# mern-saas-starter
+# starter-mern-saas
