@@ -13,6 +13,7 @@ Internal Employee Directory is a contemporary, full-stack web application tailor
 ## Technologies Used
 
 - **Database:** [MongoDB](https://www.mongodb.com/) - A document-based, distributed database built for modern application developers.
+- **Frontend:** 
   - [React.js](https://reactjs.org/)
   - [Tailwind CSS](https://tailwindcss.com/)
 - **Backend:** 
