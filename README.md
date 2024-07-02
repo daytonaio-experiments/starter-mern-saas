@@ -1,5 +1,5 @@
 
-# Customer Relationship Management App
+# Employee Management App
 
 The Customer Relationship Management (CRM) App is a modern, full-stack web application designed to efficiently manage and showcase customer details within an organization. It leverages a MongoDB database for robust data management, Node.js and Express.js for a powerful server-side framework, and React.js combined with Tailwind CSS for a dynamic and responsive user interface.
 ## Features
