@@ -1,13 +1,16 @@
 
-# Employee Management App
+# Creator Relationship Management (CRM) App
 
-The Customer Relationship Management (CRM) App is a modern, full-stack web application designed to efficiently manage and showcase customer details within an organization. It leverages a MongoDB database for robust data management, Node.js and Express.js for a powerful server-side framework, and React.js combined with Tailwind CSS for a dynamic and responsive user interface.
+The Creator Relationship Management (CRM) App is a modern, full-stack web application designed to help influencers, podcasters, and creators efficiently manage and showcase their client relationships. It leverages a MongoDB database for robust data management, Node.js and Express.js for a powerful server-side framework, and React.js combined with Tailwind CSS for a dynamic and responsive user interface.
+
 ## Features
 
-- **Customer Data Management:** Efficiently handle customer records, access individual profiles, and visualize customer interactions and history.
+- **Client Data Management:** Efficiently handle client records, access individual profiles, and visualize client interactions and history.
 - **Responsive Design:** Optimized for seamless use across different devices and screen sizes.
-- **Search and Filter:** Easily locate customers using search criteria.
-- **Interaction Tracking:** Keep track of customer interactions, communications, and follow-ups.
+- **Search and Filter:** Easily locate clients using search criteria.
+- **Interaction Tracking:** Keep track of client interactions, communications, and follow-ups.
+- **Project Management:** Organize and manage projects, collaborations, and campaigns with clients.
+
 ## Technologies Used
 
 - **Database:** [MongoDB](https://www.mongodb.com/) - A document-based, distributed database built for modern application developers.
