@@ -3,6 +3,8 @@
 
 The Creator Relationship Management (CRM) App is a modern, full-stack web application designed to help influencers, podcasters, and creators efficiently manage and showcase their client relationships. It leverages a MongoDB database for robust data management, Node.js and Express.js for a powerful server-side framework, and React.js combined with Tailwind CSS for a dynamic and responsive user interface.
 
+<img width="1728" alt="daytona-mern-starter" src="https://github.com/daytonaio-experiments/starter-mern-saas/assets/94080341/1c61ba77-8f40-4891-8b5c-7cbf24192d6d">
+
 ## Features
 
 - **Client Data Management:** Efficiently handle client records, access individual profiles, and visualize client interactions and history.
@@ -23,9 +25,9 @@ The Creator Relationship Management (CRM) App is a modern, full-stack web applic
   - [Mongoose ODM](https://mongoosejs.com/)
 
 ## To-Do
+- Adding `.devcontainer` to enable easy workspace setup using daytona
 - Frontend Integration
 - Backend Integration
-- Adding `.devcontainer` to enable easy workspace setup using daytona
 
 ## Why Daytona ?
 
