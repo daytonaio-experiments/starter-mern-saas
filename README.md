@@ -3,7 +3,7 @@
 
 The Creator Relationship Management (CRM) App is a modern, full-stack web application designed to help influencers, podcasters, and creators efficiently manage and showcase their client relationships. It leverages a MongoDB database for robust data management, Node.js and Express.js for a powerful server-side framework, and React.js combined with Tailwind CSS for a dynamic and responsive user interface.
 
-<img width="1728" alt="daytona-mern-starter" src="https://github.com/daytonaio-experiments/starter-mern-saas/assets/94080341/1c61ba77-8f40-4891-8b5c-7cbf24192d6d">
+<img width="1728" alt="MacBook Pro 16_ - 8" src="https://github.com/daytonaio-experiments/starter-mern-saas/assets/94080341/a7bb6866-024b-4405-8282-ebdec74f1931">
 
 ## Features
 
