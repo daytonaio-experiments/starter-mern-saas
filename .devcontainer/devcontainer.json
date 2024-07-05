@@ -1,0 +1,36 @@
+{
+    "name": "Node.js, Express, React, MongoDB & Tailwind",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:20",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+    "portsAttributes": {
+        "5174": {
+            "label": "Frontend",
+            "onAutoForward": "openPreview"
+        },
+        "8000": {
+            "label": "Backend",
+            "onAutoForward": "openPreview"
+        },
+        "27017": {
+            "label": "MongoDB",
+            "onAutoForward": "ignore"
+        }
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mongodb.mongodb-vscode",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "bradlc.vscode-tailwindcss",
+                "davidanson.vscode-markdownlint"
+            ]
+        }
+    },
+
+    "postCreateCommand": "echo 'package-import-method=clone-or-copy' >> ~/.npmrc && npm install -g npm@10.8.1 nodemon && cd backend && npm install --unsafe-perm && cd ../frontend && npm install --unsafe-perm",
+
+    "remoteUser": "root"
+}
