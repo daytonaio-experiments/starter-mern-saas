@@ -42,9 +42,9 @@ const SideBar = () => {
     return (
         <div className={''}>
             <div className='pl-7'>
-                <img src={logo} alt="No img" className=' w-18 h-18 rounded-xl my-4' />
-                <div className='mb-4'>
-                    <div className='text-3xl font-bold'>Daytona CRM</div>
+                <img src={logo} alt="No img" className=' w-24 h-24 rounded-xl my-4' />
+                <div className='mb-4 ml-1'>
+                    <div className='text-4xl font-semibold'>Voltona CRM</div>
                     <div className='font-light py-2'>
                         Tool for enhanced creator relationship management
                     </div>
