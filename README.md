@@ -36,19 +36,19 @@ Preinstalled Daytona and Docker
 1. Create Daytona Workspace:
 
 ```
-dytona create <REPO_URL>
+daytona create <REPO_URL>
 ```
 
 2. Open Preferred IDE:
 
 ```
-dytona ide
+daytona ide
 ```
 
 3. Open the Project:
 
 ```
-dytona code
+daytona code
 ```
 4. Rebuild and Reopen in Container:
 
