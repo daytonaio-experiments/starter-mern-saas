@@ -3,7 +3,7 @@
 
 The Creator Relationship Management (CRM) App is a modern, full-stack web application designed to help influencers, podcasters, and creators efficiently manage and showcase their client relationships. It leverages a MongoDB database for robust data management, Node.js and Express.js for a powerful server-side framework, and React.js combined with Tailwind CSS for a dynamic and responsive user interface.
 
-<img width="1728" alt="MacBook Pro 16_ - 8" src="https://github.com/daytonaio-experiments/starter-mern-saas/assets/94080341/a7bb6866-024b-4405-8282-ebdec74f1931">
+<img width="1728" alt="MacBook Pro 16_ - 8(2)" src="https://github.com/daytonaio-experiments/starter-mern-saas/assets/94080341/bc64c019-e216-4ff1-8f09-c848cac519ce">
 
 ## Features
 
@@ -24,6 +24,82 @@ The Creator Relationship Management (CRM) App is a modern, full-stack web applic
   - [Express.js](https://expressjs.com/)
   - [Mongoose ODM](https://mongoosejs.com/)
 
+
+## Setting Up Daytona Workspace for the Project
+
+**Requirements**
+
+Preinstalled Daytona and Docker
+
+**Steps to Set Up Daytona Workspace**
+
+1. Create Daytona Workspace:
+
+```
+dytona create <REPO_URL>
+```
+
+2. Open Preferred IDE:
+
+```
+dytona ide
+```
+
+3. Open the Project:
+
+```
+dytona code
+```
+4. Rebuild and Reopen in Container:
+
+- Once the project is opened in VS Code, press `Ctrl + Shift + P` and select `Dev Containers: Rebuild and Reopen in Container`.
+
+- Wait for setup to complete.
+
+
+## devcontainer.json Configuration
+
+Here are the details of the devcontainer.json file used in this project:
+```
+json
+
+{
+    "name": "Node.js, Express, React, MongoDB & Tailwind",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:20",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+    "portsAttributes": {
+        "5174": {
+            "label": "Frontend",
+            "onAutoForward": "openPreview"
+        },
+        "8000": {
+            "label": "Backend",
+            "onAutoForward": "openPreview"
+        },
+        "27017": {
+            "label": "MongoDB",
+            "onAutoForward": "ignore"
+        }
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mongodb.mongodb-vscode",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "bradlc.vscode-tailwindcss",
+                "davidanson.vscode-markdownlint"
+            ]
+        }
+    },
+
+    "postCreateCommand": "echo 'package-import-method=clone-or-copy' >> ~/.npmrc && npm install -g npm@10.8.1 nodemon && cd backend && npm install --unsafe-perm && cd ../frontend && npm install --unsafe-perm",
+
+    "remoteUser": "root"
+}
+```
 ## To-Do
 - Adding `.devcontainer` to enable easy workspace setup using daytona
 - Frontend Integration
