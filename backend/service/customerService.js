@@ -1,53 +1,66 @@
 const Customer = require('../models/customer');
 
 class CustomerService {
+
     async getAllCustomers() {
-        const existingCustomers = await Customer.find();
-        return existingCustomers;
+        try {
+            const existingCustomers = await Customer.find();
+            return existingCustomers;
+        } catch (error) {
+            throw new Error('Database Error: Unable to retrieve clients');
+        }
     }
 
-    async getAllCustomer(id) {
-        const existingCustomers = await Customer.findById(id);
-        return existingCustomers;
+    async getCustomerById(id) {
+        try {
+            const existingCustomer = await Customer.findById(id);
+            if (!existingCustomer) throw new Error('Client Not Found');
+            return existingCustomer;
+        } catch (error) {
+            throw new Error(error.message.includes('Client Not Found') ? error.message : 'Database Error: Unable to retrieve client');
+        }
     }
 
     async addCustomer(body) {
-
-        const newCustomer = new Customer({
-            name: body.name,
-            designation: body.designation,
-            bio: body.bio,
-            contactDetails: body.contactDetails,
-            profiles: body.profiles,
-            customerStatus: body.customerStatus,
-            projectStatus: body.projectStatus,
-            profilePicture: body.profilePicture,
-        });
-
-        await newCustomer.save();
-        return true;
+        try {
+            const newCustomer = new Customer({
+                name: body.name,
+                designation: body.designation,
+                bio: body.bio,
+                contactDetails: body.contactDetails,
+                profiles: body.profiles,
+                customerStatus: body.customerStatus,
+                projectStatus: body.projectStatus,
+                profilePicture: body.profilePicture,
+            });
+            await newCustomer.save();
+            return newCustomer;
+        } catch (error) {
+            throw new Error('Database Error: Unable to add client');
+        }
     }
 
     async updateCustomer(id, body) {
-        const existingCustomer = await Customer.findByIdAndUpdate(id, {
-            customerStatus: body.customerStatus,
-            projectStatus: body.projectStatus
-        });
-
-        if (!existingCustomer) {
-            return false;
+        try {
+            const existingCustomer = await Customer.findByIdAndUpdate(id, {
+                customerStatus: body.customerStatus,
+                projectStatus: body.projectStatus
+            });
+            if (!existingCustomer) throw new Error('Client Not Found');
+            return existingCustomer;
+        } catch (error) {
+            throw new Error(error.message.includes('Client Not Found') ? error.message : 'Database Error: Unable to update client');
         }
-
-        return true;
     }
 
     async deleteCustomer(id) {
-        const existingCustomer = await Customer.findByIdAndDelete(id);
-        if (!existingCustomer) {
-            return false;
+        try {
+            const existingCustomer = await Customer.findByIdAndDelete(id);
+            if (!existingCustomer) throw new Error('Client Not Found');
+            return true;
+        } catch (error) {
+            throw new Error(error.message.includes('Client Not Found') ? error.message : 'Database Error: Unable to delete client');
         }
-
-        return true;
     }
 }
 
