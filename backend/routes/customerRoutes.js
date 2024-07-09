@@ -7,38 +7,32 @@ router.get('/', async (req, res) => {
     try {
         const allCustomers = await customerService.getAllCustomers();
         if(!allCustomers || allCustomers.length === 0){
-            return res.status(404).json({ message: "Customers not found!" });
+            return res.status(404).json({ message: "Client not found!" });
         }
         res.status(200).json({ customers: allCustomers });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Internal server error!" });
+        res.status(500).json({ message: error.message });
     }
 });
 
 router.get('/:id', async (req, res) => {
     try {
-        const customer = await customerService.getAllCustomer(req.params.id);
-        if(!customer){
-            return res.status(404).json({ message: "Customer not found!" });
-        }
-        res.status(200).json({ customer: customer });
+        const customer = await customerService.getCustomerById(req.params.id);
+        res.status(200).json({ customer });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Internal server error!" });
+        res.status(error.message === 'Client Not Found' ? 404 : 500).json({ message: error.message });
     }
 });
 
 router.post('/', async (req, res) => {
     try {
         const newCustomer = await customerService.addCustomer(req.body);
-        if (newCustomer) {
-            return res.status(201).json({ message: "Customer added successfully!", customerId: newCustomer._id });
-        }
-        res.status(409).json({ message: "Customer already exists!" });
+        return res.status(201).json({ message: "Client added successfully!", customerId: newCustomer._id });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Internal server error!" });
+        res.status(500).json({ message: error.message });
     }
 });
 
@@ -46,12 +40,12 @@ router.patch('/:id', async (req, res) => {
     try {
         const updatedCustomer = await customerService.updateCustomer(req.params.id, req.body);
         if (!updatedCustomer) {
-            return res.status(404).json({ message: "Customer not found!" });
+            return res.status(404).json({ message: "Client not found!" });
         }
-        res.status(200).json({ message: "Customer updated successfully!", customer: updatedCustomer });
+        res.status(200).json({ message: "Client updated successfully!", customer: updatedCustomer });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Internal server error!" });
+        res.status(error.message === 'Client Not Found' ? 404 : 500).json({ message: error.message });
     }
 });
 
@@ -61,10 +55,10 @@ router.delete('/:id', async (req, res) => {
         if (!deletedCustomer) {
             return res.status(404).json({ message: "Customer not found!" });
         }
-        res.status(200).json({ message: "Customer deleted successfully!" });
+        res.status(200).json({ message: "Client deleted successfully!" });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Internal server error!" });
+        res.status(error.message === 'Client Not Found' ? 404 : 500).json({ message: error.message });
     }
 });
 
