@@ -25,18 +25,20 @@ The Creator Relationship Management (CRM) App is a modern, full-stack web applic
   - [Mongoose ODM](https://mongoosejs.com/)
 
 
-## Setting Up Daytona Workspace for the Project
+## Setting Up Workspace for the Project
 
 **Requirements**
 
-Preinstalled Daytona and Docker
+- Preinstalled Daytona and Docker.
+- Running Daytona server using `daytona serve`.
+- Get MongoDB URI: To set up MongoDB, refer to the [MongoDB Atlas Getting Started guide](https://www.mongodb.com/docs/atlas/getting-started/).
 
 **Steps to Set Up Daytona Workspace**
 
 1. Create Daytona Workspace:
 
 ```
-daytona create <REPO_URL>
+daytona create https://github.com/daytonaio-experiments/starter-mern-saas.git
 ```
 
 2. Open Preferred IDE:
@@ -50,12 +52,24 @@ daytona ide
 ```
 daytona code
 ```
-4. Rebuild and Reopen in Container:
-
-- Once the project is opened in VS Code, press `Ctrl + Shift + P` and select `Dev Containers: Rebuild and Reopen in Container`.
-
-- Wait for setup to complete.
-
+**Starting the Backend Server**
+- Create a .env file in the backend directory and add the following line in it. Change "Your Database Connection String" with your MongoDB connection URI.
+```
+MONGO_URI="Your Database Connection String"
+```
+- Navigate to backend directory, start the backend server by running:
+```
+npm run dev
+```
+**Starting the Frontend**
+- Create a .env file in the frontend directory and add the following line:
+```
+VITE_BACKEND_URL="http://localhost:8000/api/customers/"
+```
+- Navigate to frontend directory, start the frontend by running:
+```
+npm run dev
+```
 
 ## devcontainer.json Configuration
 
@@ -100,10 +114,6 @@ json
     "remoteUser": "root"
 }
 ```
-## To-Do
-- Adding `.devcontainer` to enable easy workspace setup using daytona
-- Frontend Integration
-- Backend Integration
 
 ## Why Daytona ?
 
