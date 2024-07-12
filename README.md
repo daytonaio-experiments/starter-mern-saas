@@ -41,13 +41,13 @@ The Creator Relationship Management (CRM) App is a modern, full-stack web applic
 daytona create https://github.com/daytonaio-experiments/starter-mern-saas.git
 ```
 
-2. Open Preferred IDE:
+2. Select Preferred IDE:
 
 ```
 daytona ide
 ```
 
-3. Open the Project:
+3. Open the Workspace:
 
 ```
 daytona code
