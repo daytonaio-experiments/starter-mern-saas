@@ -1,8 +1,17 @@
 {
     "name": "Node.js, Express, React, MongoDB & Tailwind",
-    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:20",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-
+    "features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"nodeGypDependencies": true,
+			"version": "lts",
+			"nvmVersion": "latest"
+		}
+    },    
     "portsAttributes": {
         "5174": {
             "label": "Frontend",
@@ -17,7 +26,6 @@
             "onAutoForward": "ignore"
         }
     },
-
     "customizations": {
         "vscode": {
             "extensions": [
@@ -29,8 +37,6 @@
             ]
         }
     },
-
-    "postCreateCommand": "echo 'package-import-method=clone-or-copy' >> ~/.npmrc && npm install -g npm@10.8.1 nodemon && cd backend && npm install --unsafe-perm && cd ../frontend && npm install --unsafe-perm",
-
-    "remoteUser": "root"
+    "postCreateCommand": "echo 'package-import-method=clone-or-copy' >> ~/.npmrc && sudo chown -R $USERNAME:$USERNAME /workspaces && npm install -g npm@10.8.1 nodemon && cd backend && npm install && cd ../frontend && npm install",
+    "remoteUser": "developer"
 }
