@@ -30,7 +30,7 @@ The Creator Relationship Management (CRM) App is a modern, full-stack web applic
 **Requirements**
 
 - Preinstalled Daytona and Docker.
-- Running Daytona server using `daytona serve`.
+- Running Daytona server using `daytona serve` command.
 - Get MongoDB URI: To set up MongoDB, refer to the [MongoDB Atlas Getting Started guide](https://www.mongodb.com/docs/atlas/getting-started/).
 
 **Steps to Set Up Daytona Workspace**
@@ -79,9 +79,18 @@ json
 
 {
     "name": "Node.js, Express, React, MongoDB & Tailwind",
-    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:20",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "nodeGypDependencies": true,
+            "version": "lts",
+            "nvmVersion": "latest"
+        }
+    },    
     "portsAttributes": {
         "5174": {
             "label": "Frontend",
@@ -96,7 +105,6 @@ json
             "onAutoForward": "ignore"
         }
     },
-
     "customizations": {
         "vscode": {
             "extensions": [
@@ -108,12 +116,20 @@ json
             ]
         }
     },
-
-    "postCreateCommand": "echo 'package-import-method=clone-or-copy' >> ~/.npmrc && npm install -g npm@10.8.1 nodemon && cd backend && npm install --unsafe-perm && cd ../frontend && npm install --unsafe-perm",
-
-    "remoteUser": "root"
+    "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
+    "remoteUser": "daytona"
 }
 ```
+This configuration includes:
+
+- **Name**: Specifies the name of the development environment.
+- **Build**: Uses a Dockerfile to create a custom environment with specified dependencies.
+- **Workspace Folder**: Specifies the root workspace folder.
+- **Features**: Adds Node.js with specific configurations using GitHub Container Registry features.
+- **Ports Attributes**: Sets up port forwarding for frontend, backend, and MongoDB.
+- **Customizations**: Installs essential VSCode extensions for MongoDB, ESLint, Prettier, Tailwind CSS, and Markdown linting.
+- **Post-Creation Command**: Installs necessary npm packages and sets up backend and frontend dependencies.
+- **RemoteUser**: Configures the container to run as the daytona user.
 
 ## Why Daytona ?
 
