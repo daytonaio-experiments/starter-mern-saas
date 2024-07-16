@@ -37,6 +37,6 @@
             ]
         }
     },
-    "postCreateCommand": "sudo chown -R $(id -u):$(id -g) /workspaces && sudo chmod -R 775 /workspaces && echo 'package-import-method=clone-or-copy' >> ~/.npmrc && npm install -g npm@10.8.1 nodemon && cd backend && npm install && cd ../frontend && npm install",
+    "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
     "remoteUser": "daytona"
 }
