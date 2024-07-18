@@ -3,7 +3,7 @@
 
 The Creator Relationship Management (CRM) App is a modern, full-stack web application designed to help influencers, podcasters, and creators efficiently manage and showcase their client relationships. It leverages a MongoDB database for robust data management, Node.js and Express.js for a powerful server-side framework, and React.js combined with Tailwind CSS for a dynamic and responsive user interface.
 
-<img width="1728" alt="MacBook Pro 16_ - 8(2)" src="https://github.com/daytonaio-experiments/starter-mern-saas/assets/94080341/bc64c019-e216-4ff1-8f09-c848cac519ce">
+<img width="1728" alt="MacBook Pro 16_ - 8(2)" src="https://github.com/user-attachments/assets/03395020-091b-496a-b3dc-756b3bdcb46f">
 
 ## Features
 
@@ -53,22 +53,22 @@ daytona ide
 daytona code
 ```
 **Starting the Backend Server**
-- Create a .env file in the backend directory and add the following line in it. Change "Your Database Connection String" with your MongoDB connection URI.
+- Create a .env file in the backend directory and add the following line. Change the below string to match your MongoDB connection URI.
 ```
-MONGO_URI="Your Database Connection String"
+MONGO_URI="mongodb+srv://<username>:<password>@cluster0.ce6av93.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 ```
-- Navigate to backend directory, start the backend server by running:
+- Navigate to the backend directory, and start the backend server by running:
 ```
-npm run dev
+sudo npm run dev
 ```
 **Starting the Frontend**
 - Create a .env file in the frontend directory and add the following line:
 ```
 VITE_BACKEND_URL="http://localhost:8000/api/customers/"
 ```
-- Navigate to frontend directory, start the frontend by running:
+- Navigate to the frontend directory, start the frontend by running:
 ```
-npm run dev
+sudo npm run dev
 ```
 
 ## devcontainer.json Configuration
@@ -116,8 +116,7 @@ json
             ]
         }
     },
-    "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
-    "remoteUser": "daytona"
+    "postCreateCommand": "cd backend && sudo npm install && cd ../frontend && sudo npm install"
 }
 ```
 This configuration includes:
@@ -129,9 +128,8 @@ This configuration includes:
 - **Ports Attributes**: Sets up port forwarding for frontend, backend, and MongoDB.
 - **Customizations**: Installs essential VSCode extensions for MongoDB, ESLint, Prettier, Tailwind CSS, and Markdown linting.
 - **Post-Creation Command**: Installs necessary npm packages and sets up backend and frontend dependencies.
-- **RemoteUser**: Configures the container to run as the daytona user.
 
-## Why Daytona ?
+## Why Daytona?
 
 Daytona is a radically simple open source development environment manager.
 
