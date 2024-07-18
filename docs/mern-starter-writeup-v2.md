@@ -69,7 +69,7 @@ daytona code
 
 After following these commands, the repository will open in your preferred IDE.
 
-![workspace open ss](https://github.com/user-attachments/assets/b28d8782-b820-40a4-b892-49dc393d1058)
+![mern-wroksapce-open](assets/mern-app-workspace.png)
 
 Step 4: Starting the Backend Server
 
@@ -100,7 +100,7 @@ sudo npm run dev
 
 Your MERN app should now be up and running.
 
-![running app ss](https://github.com/user-attachments/assets/03395020-091b-496a-b3dc-756b3bdcb46f)
+![mern-running-app](assets/mern-app-ui.png)
 
 #### **Structure of MERN Repository**
 
