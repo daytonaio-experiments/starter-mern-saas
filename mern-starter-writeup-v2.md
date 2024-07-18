@@ -22,9 +22,9 @@ Each component of the MERN stack plays a crucial role in the development process
 Before we dive into setting up your MERN stack environment, let's make sure you have the necessary tools and a basic understanding to follow along smoothly. Here are the prerequisites you'll need:
 
 #### **Prerequisites**
-- Basic understanding of JavaScript
-- IDE (Integrated Development Environment) such as Visual Studio Code (VSC)
-- Docker installed for managing the Daytona workspace
+- Basic understanding of JavaScript.
+- IDE (Integrated Development Environment) such as Visual Studio Code (VSC).
+- Docker installed as a provider for spinning up the Daytona workspace inside the container.
 
 #### **Getting Started with the MERN App**
 
@@ -37,6 +37,8 @@ App utilizes MongoDB for data management, Node.js and Express.js for the server-
 
 To set up MongoDB, refer to the [MongoDB Atlas Getting Started guide](https://www.mongodb.com/docs/atlas/getting-started/). This guide will walk you through creating a MongoDB cluster, getting the Mongo URI, and adding your IP address to the network access settings. Once you have your Mongo URI, you can integrate it into your project configuration.
 
+**NOTE**: If you encounter problems connecting to the database, go to your MongoDB cluster's "Network Access" settings, click "Add IP Address," and select "Allow Access from Anywhere."
+
 #### **Setting up Daytona for Development Workspace**
 
 Setting up a local development environment can be painful due to version mismatches and configuration issues. [Daytona](https://www.daytona.io/) automatically sets up a Node.js environment with necessary tools, manages port forwarding seamlessly, and runs essential post-create commands, ensuring a consistent, ready-to-use setup that minimizes manual configuration.
@@ -45,27 +47,20 @@ To set up Daytona, refer to the [Daytona installation documentation](https://www
 
 #### **Cloning and Setting Up Your MERN Stack Environment:**
 
-Step 1: Initiate Daytona Server:
-
-- Begin by initiating the Daytona server with the following command:
-
-```
-daytona serve
-```
-Step 2: Create a Workspace
+Step 1: Create a Workspace
 
 - Initiate the process by executing the following command using this Git URL for the repository:
 ```
 daytona create https://github.com/daytonaio-experiments/starter-mern-saas.git
 ```
-Step 3: Set a Preferred IDE
+Step 2: Set a Preferred IDE
 
 - To set up your preferred IDE, list all supported IDEs using the following command and select from them.
 ```
 daytona ide
 ```
 
-Step 4: Open the Workspace
+Step 3: Open the Workspace
 
 - Once you've selected your preferred IDE, open the Workspace by executing the following command. Select the workspace created above for this project, and it will open in your chosen IDE.
 ```
@@ -76,31 +71,31 @@ After following these commands, the repository will open in your preferred IDE.
 
 ![workspace open ss](https://github.com/user-attachments/assets/b28d8782-b820-40a4-b892-49dc393d1058)
 
-Step 5: Starting the Backend Server
+Step 4: Starting the Backend Server
 
-- Create a .env file in the backend directory and add the following line in it. Change "your_database_connection_string" with your MongoDB connection URI.
+Create a .env file in the backend directory and add the following line inside it. Change the string below to match your MongoDB connection URI.
 ```
-MONGO_URI="your_database_connection_string"
-```
-
-- Start the backend server by running:
-
-```
-npm run dev
+MONGO_URI="mongodb+srv://<username>:<password>@cluster0.ce6av93.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 ```
 
-Step 6: Starting the Frontend
+- Start the backend server by navigating to the backend directory and running:
+
+```
+sudo npm run dev
+```
+
+Step 5: Starting the Frontend
 
 - Create a .env file in the frontend directory and add the following line:
 
 ```
-VITE_BACKEND_URL="<http://localhost:8000/api/customers/>"
+VITE_BACKEND_URL="http://localhost:8000/api/customers/"
 ```
 
-- Start the frontend development server by running:
+- Start the frontend server by navigating to the frontend directory and running:
 
 ```
-npm run dev
+sudo npm run dev
 ```
 
 Your MERN app should now be up and running.
@@ -171,8 +166,7 @@ json
             ]
         }
     },
-    "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
-    "remoteUser": "daytona"
+    "postCreateCommand": "cd backend && sudo npm install && cd ../frontend && sudo npm install",
 }
 ```
 This configuration includes:
@@ -184,7 +178,6 @@ This configuration includes:
 - **Ports Attributes**: Sets up port forwarding for frontend, backend, and MongoDB.
 - **Customizations**: Installs essential VSCode extensions for MongoDB, ESLint, Prettier, Tailwind CSS, and Markdown linting.
 - **Post-Creation Command**: Installs necessary npm packages and sets up backend and frontend dependencies.
-- **RemoteUser**: Configures the container to run as the daytona user.
 
 Daytona’s integration with .devcontainer allows us to create a consistent development environment that is easily reproducible.
 
