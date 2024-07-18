@@ -37,6 +37,5 @@
             ]
         }
     },
-    "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
-    "remoteUser": "daytona"
+    "postCreateCommand": "cd backend && sudo npm install && cd ../frontend && sudo npm install"
 }
