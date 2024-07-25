@@ -2,16 +2,31 @@
     "name": "Node.js, Express, React, MongoDB & Tailwind",
     "build": {
         "dockerfile": "Dockerfile",
-        "context": "."
+        "context": ".",
+        "args": {
+            "USER_UID": "1001",
+		    "USER_GID": "1001"
+        }
     },
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    // "features": {
+    //     "ghcr.io/devcontainers/features/node:1": {
+    //         "nodeGypDependencies": true,
+    //         "version": "lts",
+    //         "nvmVersion": "latest"
+    //     }
+    // },    
     "features": {
+        "ghcr.io/devcontainers/features/common-utils:2.4.4": {
+            // "userUid": "1000",
+            // "userGid": "1000",
+            "username": "daytona"
+        },
         "ghcr.io/devcontainers/features/node:1": {
-            "nodeGypDependencies": true,
-            "version": "lts",
-            "nvmVersion": "latest"
+            // "version": "lts",
+            // "nvmVersion": "latest"
         }
-    },    
+    },  
     "portsAttributes": {
         "5174": {
             "label": "Frontend",
@@ -37,6 +52,7 @@
             ]
         }
     },
-    "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
+    // "postCreateCommand": "cd backend && sudo npm install && cd ../frontend && sudo npm install"
+    "postCreateCommand": "cd backend && npm install",
     "remoteUser": "daytona"
 }
