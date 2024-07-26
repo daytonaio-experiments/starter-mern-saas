@@ -1,17 +1,17 @@
 {
     "name": "Node.js, Express, React, MongoDB & Tailwind",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": "."
-    },
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node",
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
             "nodeGypDependencies": true,
             "version": "lts",
             "nvmVersion": "latest"
+        },
+        "ghcr.io/devcontainers/features/common-utils:2.4.4": {
+            "username": "daytona",
+            "configureZshAsDefaultShell": true
         }
-    },    
+    },
     "portsAttributes": {
         "5174": {
             "label": "Frontend",
@@ -37,5 +37,8 @@
             ]
         }
     },
-    "postCreateCommand": "cd backend && sudo npm install && cd ../frontend && sudo npm install"
+    "workspaceFolder": "/workspaces/starter-mern-saas",
+    "onCreateCommand": "npm install -g nodemon",
+    "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
+    "remoteUser": "daytona"
 }
