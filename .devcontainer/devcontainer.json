@@ -8,9 +8,10 @@
             "nvmVersion": "latest"
         },
         "ghcr.io/devcontainers/features/common-utils:2.4.4": {
-            "username": "daytona"
+            "username": "daytona",
+            "configureZshAsDefaultShell": true
         }
-    },    
+    },
     "portsAttributes": {
         "5174": {
             "label": "Frontend",
@@ -36,7 +37,8 @@
             ]
         }
     },
-    "onCreateCommand": "sudo chown -R daytona /workspaces && npm install -g nodemon",
+    "workspaceFolder": "/workspaces/starter-mern-saas",
+    "onCreateCommand": "npm install -g nodemon",
     "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
     "remoteUser": "daytona"
 }
