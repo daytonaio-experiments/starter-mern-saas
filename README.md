@@ -59,7 +59,7 @@ MONGO_URI="mongodb+srv://<username>:<password>@cluster0.ce6av93.mongodb.net/?ret
 ```
 - Navigate to the backend directory, and start the backend server by running:
 ```
-sudo npm run dev
+npm run dev
 ```
 **Starting the Frontend**
 - Create a .env file in the frontend directory and add the following line:
@@ -68,29 +68,27 @@ VITE_BACKEND_URL="http://localhost:8000/api/customers/"
 ```
 - Navigate to the frontend directory, start the frontend by running:
 ```
-sudo npm run dev
+npm run dev
 ```
 
 ## devcontainer.json Configuration
 
 Here are the details of the devcontainer.json file used in this project:
 ```
-json
-
 {
     "name": "Node.js, Express, React, MongoDB & Tailwind",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": "."
-    },
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node",
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
             "nodeGypDependencies": true,
             "version": "lts",
             "nvmVersion": "latest"
+        },
+        "ghcr.io/devcontainers/features/common-utils:2.4.4": {
+            "username": "daytona",
+            "configureZshAsDefaultShell": true
         }
-    },    
+    },
     "portsAttributes": {
         "5174": {
             "label": "Frontend",
@@ -116,18 +114,23 @@ json
             ]
         }
     },
-    "postCreateCommand": "cd backend && sudo npm install && cd ../frontend && sudo npm install"
+    "workspaceFolder": "/workspaces/starter-mern-saas",
+    "onCreateCommand": "npm install -g nodemon",
+    "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
+    "remoteUser": "daytona"
 }
 ```
 This configuration includes:
 
-- **Name**: Specifies the name of the development environment.
-- **Build**: Uses a Dockerfile to create a custom environment with specified dependencies.
-- **Workspace Folder**: Specifies the root workspace folder.
-- **Features**: Adds Node.js with specific configurations using GitHub Container Registry features.
-- **Ports Attributes**: Sets up port forwarding for frontend, backend, and MongoDB.
-- **Customizations**: Installs essential VSCode extensions for MongoDB, ESLint, Prettier, Tailwind CSS, and Markdown linting.
-- **Post-Creation Command**: Installs necessary npm packages and sets up backend and frontend dependencies.
+- **name**: Specifies the name of the development environment.
+- **image**: Uses the Microsoft container registry image for JavaScript and Node.js development.
+- **features**: Adds Node.js with Node-Gyp dependencies (latest LTS and NVM), and common utilities with Zsh as the default shell for the user "daytona".
+- **portsAttributes**: Sets up port forwarding for frontend, backend, and MongoDB.
+- **customizations**: Installs essential VSCode extensions for MongoDB, ESLint, Prettier, Tailwind CSS, and Markdown linting.
+- **WorkspaceFolder**: Specifies the workspace folder as "/workspaces/starter-mern-saas".
+- **onCreateCommand**: Runs the command "npm install -g nodemon" to install nodemon after creating the container.
+- **postCreateCommand**: Installs necessary npm packages and sets up backend and frontend dependencies.
+- **remoteUser**: Sets the remote user to "daytona".
 
 ## Why Daytona?
 
