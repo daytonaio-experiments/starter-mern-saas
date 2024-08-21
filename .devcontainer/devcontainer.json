@@ -2,7 +2,7 @@
     "name": "Node.js, Express, React, MongoDB & Tailwind",
     "image": "ubuntu:22.04",
     "features": {
-        "ghcr.io/devcontainers/features/common-utils:2.5.1": {
+        "ghcr.io/devcontainers/features/common-utils:2.4.7": {
             "username": "daytona",
             "userUid": 1000,
             "userGid": 1000,
@@ -11,7 +11,7 @@
         "ghcr.io/devcontainers/features/node:1": {
             "nodeGypDependencies": true,
             "version": "lts",
-            "nvmVersion": "latest"
+            "nvmVersion": "0.40.0"
         },
         "ghcr.io/devcontainers/features/git:1": {}
     },
