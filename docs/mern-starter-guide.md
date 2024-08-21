@@ -122,33 +122,39 @@ Daytona streamlines the setup process of our MERN stack application, ensuring a 
 
 #### **Using .devcontainer for Development**
 
-.devcontainer configuration provides a predefined development environment using Docker containers. Here’s the configuration used in this project:
+devcontainer.json configuration provides a predefined development environment using Docker containers. Here’s the configuration used in this project:
 
-```
-json
-
+```json
 {
     "name": "Node.js, Express, React, MongoDB & Tailwind",
-    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node",
+    "image": "ubuntu:22.04",
     "features": {
+        "ghcr.io/devcontainers/features/common-utils:2.4.7": {
+            "username": "daytona",
+            "userUid": 1000,
+            "userGid": 1000,
+            "configureZshAsDefaultShell": true
+        },
         "ghcr.io/devcontainers/features/node:1": {
             "nodeGypDependencies": true,
             "version": "lts",
-            "nvmVersion": "latest"
+            "nvmVersion": "0.40.0"
         },
-        "ghcr.io/devcontainers/features/common-utils:2.4.4": {
-            "username": "daytona",
-            "configureZshAsDefaultShell": true
-        }
+        "ghcr.io/devcontainers/features/git:1": {}
     },
+    "overrideFeatureInstallOrder": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/git",
+        "ghcr.io/devcontainers/features/node"
+    ],
     "portsAttributes": {
         "5174": {
             "label": "Frontend",
-            "onAutoForward": "openPreview"
+            "onAutoForward": "notify"
         },
         "8000": {
             "label": "Backend",
-            "onAutoForward": "openPreview"
+            "onAutoForward": "ignore"
         },
         "27017": {
             "label": "MongoDB",
@@ -175,14 +181,18 @@ json
 This configuration includes:
 
 - **name**: Specifies the name of the development environment.
-- **image**: Uses the Microsoft container registry image for JavaScript and Node.js development.
-- **features**: Adds Node.js with Node-Gyp dependencies (latest LTS and NVM), and common utilities with Zsh as the default shell for the user "daytona".
-- **portsAttributes**: Sets up port forwarding for frontend, backend, and MongoDB.
-- **customizations**: Installs essential VSCode extensions for MongoDB, ESLint, Prettier, Tailwind CSS, and Markdown linting.
-- **workspaceFolder**: Specifies the workspace folder as "/workspaces/starter-mern-saas".
-- **onCreateCommand**: Runs the command "npm install -g nodemon" to install nodemon after creating the container.
-- **postCreateCommand**: Installs necessary npm packages and sets up backend and frontend dependencies.
-- **remoteUser**: Sets the remote user to "daytona".
+- **image**: Uses the `ubuntu:22.04` Docker image as the base for the development environment.
+- **features**:
+  - **common-utils**: Adds common utilities (e.g., Zsh) with configurations for the user "daytona" (UID: 1000, GID: 1000) and sets Zsh as the default shell.
+  - **node**: Installs the LTS version of Node.js with dependencies for `node-gyp` and manages Node versions using NVM 0.40.0.
+  - **git**: Installs Git to manage source code versioning.
+- **overrideFeatureInstallOrder**: Specifies the order of feature installation to ensure common utilities, Git, and Node.js are set up in the correct sequence.
+- **portsAttributes**: Sets up port forwarding with labels for the frontend (5174), backend (8000), and MongoDB (27017) services.
+- **customizations**: Installs essential Visual Studio Code extensions, including support for MongoDB, ESLint, Prettier, Tailwind CSS, and Markdown linting.
+- **workspaceFolder**: Sets the workspace folder to `/workspaces/starter-mern-saas`.
+- **onCreateCommand**: Installs `nodemon` globally using `npm install -g nodemon`.
+- **postCreateCommand**: Installs dependencies in both the backend and frontend directories using `npm install`.
+- **remoteUser**: Sets "daytona" as the remote user for running commands within the container.
 
 Daytona’s integration with .devcontainer allows us to create a consistent development environment that is easily reproducible.
 
